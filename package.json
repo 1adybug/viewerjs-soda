@@ -1,6 +1,6 @@
 {
     "name": "viewerjs-soda",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "description": "Functional invocation for viewerjs",
     "main": "dist/cjs/index.js",
     "module": "dist/esm/index.js",
