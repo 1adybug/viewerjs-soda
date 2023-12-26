@@ -1,22 +1,25 @@
 import Viewer from "viewerjs"
+import "viewerjs/dist/viewer.css"
+
+export type ViewerOptions = Viewer.Options
 
 /**
  * @param image An image or a group of images.
  * @param options The options of the viewer.
  */
-export function preview(image: string | string[], options?: Viewer.Options): void
+export function preview(image: string | string[], options?: ViewerOptions): void
 /**
  * @param image A group of images.
  * @param indexOrSrc The index of the picture or the src to be displayed.
  * @param options The options of the viewer.
  */
-export function preview(image: string[], indexOrSrc: number | string, options?: Viewer.Options): void
+export function preview(image: string[], indexOrSrc: number | string, options?: ViewerOptions): void
 /**
  * @param image An image or a group of images.
  * @param indexOrSrcOrOptions The index of the picture to be displayed or the options of the viewer.
  * @param options The options of the viewer.
  */
-export function preview(image: string | string[], indexOrSrcOrOptions?: number | string | Viewer.Options, options?: Viewer.Options) {
+export function preview(image: string | string[], indexOrSrcOrOptions?: number | string | ViewerOptions, options?: ViewerOptions) {
     if (image.length === 0) return
     const wrapper = document.createElement("div")
     wrapper.style.display = "none"
@@ -28,7 +31,7 @@ export function preview(image: string | string[], indexOrSrcOrOptions?: number |
         return img
     })
     let viewer: Viewer
-    let finalOptions: Viewer.Options
+    let finalOptions: ViewerOptions
     if (typeof image === "string") {
         finalOptions = { navbar: false, ...options }
     } else {
