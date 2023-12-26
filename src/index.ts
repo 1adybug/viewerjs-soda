@@ -1,18 +1,18 @@
 import Viewer from "viewerjs"
 
 /**
- * @param image A picture or a set of pictures.
+ * @param image An image or a group of images.
  * @param options The options of the viewer.
  */
 export function preview(image: string | string[], options?: Viewer.Options): void
 /**
- * @param image A set of pictures.
+ * @param image A group of images.
  * @param indexOrSrc The index of the picture or the src to be displayed.
  * @param options The options of the viewer.
  */
 export function preview(image: string[], indexOrSrc: number | string, options?: Viewer.Options): void
 /**
- * @param image A picture or a set of pictures.
+ * @param image An image or a group of images.
  * @param indexOrSrcOrOptions The index of the picture to be displayed or the options of the viewer.
  * @param options The options of the viewer.
  */

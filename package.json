@@ -4,6 +4,10 @@
     "description": "Functional invocation for viewerjs",
     "main": "dist/cjs/index.js",
     "module": "dist/esm/index.js",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/1adybug/viewerjs-soda"
+    },
     "scripts": {
         "dev": "father dev",
         "build": "father build",
@@ -11,9 +15,6 @@
         "prepublishOnly": "father doctor && npm run build"
     },
     "keywords": [],
-    "authors": [
-        "lurongv@qq.com"
-    ],
     "license": "MIT",
     "files": [
         "dist",
