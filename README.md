@@ -14,7 +14,7 @@
  */
 export function preview(image: string | string[], options?: ViewerOptions): void
 /**
- * @param image An group of images.
+ * @param image A group of images.
  * @param indexOrSrc The index of the image or the src to be displayed.
  * @param options The options of the viewer.
  */
