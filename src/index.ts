@@ -1,34 +1,34 @@
 import Viewer from "viewerjs"
 import "viewerjs/dist/viewer.css"
 
+export { Viewer }
+
 export type ViewerOptions = Viewer.Options
 
 /**
  * @param image An image or a group of images.
  * @param options The options of the viewer.
  */
-export function preview(image: string | string[], options?: ViewerOptions): void
+export function view(image: string | string[], options?: ViewerOptions): void
 /**
  * @param image A group of images.
  * @param indexOrSrc The index of the picture or the src to be displayed.
  * @param options The options of the viewer.
  */
-export function preview(image: string[], indexOrSrc: number | string, options?: ViewerOptions): void
+export function view(image: string[], indexOrSrc: number | string, options?: ViewerOptions): void
 /**
  * @param image An image or a group of images.
  * @param indexOrSrcOrOptions The index of the picture to be displayed or the options of the viewer.
  * @param options The options of the viewer.
  */
-export function preview(image: string | string[], indexOrSrcOrOptions?: number | string | ViewerOptions, options?: ViewerOptions) {
+export function view(image: string | string[], indexOrSrcOrOptions?: number | string | ViewerOptions, options?: ViewerOptions) {
     if (image.length === 0) return
-    const wrapper = document.createElement("div")
-    wrapper.style.display = "none"
+    const container = document.createElement("div")
     const images = Array.isArray(image) ? image : [image]
-    const imageEles = images.map(src => {
+    images.forEach(src => {
         const img = document.createElement("img")
         img.src = src
-        wrapper.appendChild(img)
-        return img
+        container.appendChild(img)
     })
     let viewer: Viewer
     let finalOptions: ViewerOptions
@@ -42,10 +42,13 @@ export function preview(image: string | string[], indexOrSrcOrOptions?: number |
         hidden?.(e)
         viewer.destroy()
     }
-    viewer = new Viewer(wrapper, finalOptions)
+    viewer = new Viewer(container, finalOptions)
     let index = typeof indexOrSrcOrOptions === "number" ? indexOrSrcOrOptions : typeof indexOrSrcOrOptions === "string" ? images.indexOf(indexOrSrcOrOptions) : 0
-    if (!Number.isInteger(index) || index < 0 || index >= images.length) index = 0
-    imageEles[index].click()
+    if (!Number.isInteger(index) || index < 0 || index >= images.length) {
+        console.warn("The index is invalid and has been set to 0")
+        index = 0
+    }
+    viewer.view(index)
 }
 
-export default preview
+export default view

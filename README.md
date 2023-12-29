@@ -12,32 +12,31 @@
  * @param image An image or a group of images.
  * @param options The options of the viewer.
  */
-export function preview(image: string | string[], options?: ViewerOptions): void
+export function view(image: string | string[], options?: ViewerOptions): void
 /**
  * @param image A group of images.
  * @param indexOrSrc The index of the image or the src to be displayed.
  * @param options The options of the viewer.
  */
-export function preview(image: string[], indexOrSrc: number | string, options?: ViewerOptions): void
+export function view(image: string[], indexOrSrc: number | string, options?: ViewerOptions): void
 ```
 
 ## Usage
 
 ```typescript
-import { preview } from "viewerjs-soda"
-import Viewer from "viewerjs"
+import { view } from "viewerjs-soda"
 
 const options: ViewerOptions | undefined = {/** your options */}
 
-// preview an image directly
-preview("https://xxx", options)
+// view an image directly
+view("https://xxx", options)
 
-// preview a group of images
-preview(["https://aaa", "https://bbb", "https://ccc"], options)
+// view a group of images
+view(["https://aaa", "https://bbb", "https://ccc"], options)
 
-// preview a group of images, start with an index
-preview(["https://aaa", "https://bbb", "https://ccc"], 2, options)
+// view a group of images, start with an index
+view(["https://aaa", "https://bbb", "https://ccc"], 2, options)
 
-// preview a group of images, start with a src
-preview(["https://aaa", "https://bbb", "https://ccc"], "https://ccc", options)
+// view a group of images, start with a src
+view(["https://aaa", "https://bbb", "https://ccc"], "https://ccc", options)
 ```
